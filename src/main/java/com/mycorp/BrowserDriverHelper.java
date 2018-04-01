@@ -1,6 +1,8 @@
 package com.mycorp;
 
-import com.sun.istack.internal.NotNull;
+import lombok.NonNull;
+import lombok.extern.java.Log;
+import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
@@ -14,13 +16,16 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.Response;
+import org.slf4j.Logger;
 
 import java.util.Map;
 
-public class BrowserDriverService implements BrowserDriver {
+@Slf4j
+public class BrowserDriverHelper {
 
-	@Override
-	public WebDriver selectDriver(@NotNull BrowserManagerEnum browser) {
+	public static WebDriver selectDriver(@NonNull BrowserManagerEnum browser) {
+		log.debug("Seleccionando driver para el browser {}", browser);
+
 		switch (browser) {
 			case CHROME:
 				return getChromeDriver();
@@ -35,7 +40,7 @@ public class BrowserDriverService implements BrowserDriver {
 			case OPERA:
 				return getOperaDriver();
 			case PHANTOMJS:
-				return getPhatomJSDriver();
+				return getPhantomJSDriver();
 			case NONE:
 			default:
 				final DesiredCapabilities dc = new DesiredCapabilities(BrowserType.MOCK, "mock-version", Platform.ANY);
@@ -65,33 +70,27 @@ public class BrowserDriverService implements BrowserDriver {
 		}
 	}
 
-	@Override
-	public WebDriver getChromeDriver() {
+	static WebDriver getChromeDriver() {
 		return new ChromeDriver();
 	}
 
-	@Override
-	public WebDriver getFirefoxDriver() {
+	static WebDriver getFirefoxDriver() {
 		return new FirefoxDriver();
 	}
 
-	@Override
-	public WebDriver getIEDriver() {
+	static WebDriver getIEDriver() {
 		return new InternetExplorerDriver();
 	}
 
-	@Override
-	public WebDriver getEdgeDriver() {
+	static WebDriver getEdgeDriver() {
 		return new EdgeDriver();
 	}
 
-	@Override
-	public WebDriver getOperaDriver() {
+	static WebDriver getOperaDriver() {
 		return new OperaDriver();
 	}
 
-	@Override
-	public WebDriver getPhatomJSDriver() {
+	static WebDriver getPhantomJSDriver() {
 		return new PhantomJSDriver();
 	}
 }
