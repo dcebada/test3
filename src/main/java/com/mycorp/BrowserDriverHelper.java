@@ -1,7 +1,6 @@
 package com.mycorp;
 
 import lombok.NonNull;
-import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.Platform;
@@ -16,7 +15,6 @@ import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.remote.Response;
-import org.slf4j.Logger;
 
 import java.util.Map;
 
@@ -70,27 +68,27 @@ public class BrowserDriverHelper {
 		}
 	}
 
-	static WebDriver getChromeDriver() {
+	public static WebDriver getChromeDriver() {
 		return new ChromeDriver();
 	}
 
-	static WebDriver getFirefoxDriver() {
+	public static WebDriver getFirefoxDriver() {
 		return new FirefoxDriver();
 	}
 
-	static WebDriver getIEDriver() {
+	public static WebDriver getIEDriver() {
 		return new InternetExplorerDriver();
 	}
 
-	static WebDriver getEdgeDriver() {
+	public static WebDriver getEdgeDriver() {
 		return new EdgeDriver();
 	}
 
-	static WebDriver getOperaDriver() {
+	public static WebDriver getOperaDriver() {
 		return new OperaDriver();
 	}
 
-	static WebDriver getPhantomJSDriver() {
+	public static WebDriver getPhantomJSDriver() {
 		return new PhantomJSDriver();
 	}
 }
